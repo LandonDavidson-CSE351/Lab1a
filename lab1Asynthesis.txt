@@ -8,15 +8,17 @@ NetID(s):
 -----------------------------------------------------------
 1) Steps:
 
-
+1. The first step was assigning the address of the array to the first pointer. While this wasn't strictly necessary, I could have just used the address of the array directly, it was to keep it more organized. The address of the array is needed as the "start" point of the int object we are finding the size of
+2. The second step was assigning the address of the array + 1 to pointer 2. Because of pointer arithmetic this gace us the address of a byte sizeof(int) bytes of away and also the end point of our int object.
+3. Finally we casted each pointer to an unsigned long and subtracted the address of the start point from the end point to find the amount of bytes between them, aka the size of the int. I had to cast the pointers as unsigned longs because a pointer is unsigned and also 8 bytes, but more importantly because a long doesn't use pointer arithmetic, which is good because we wanted to know the amount of bytes between each int object, not the amount of ints between each (aka 1).
 
 -----------------------------------------------------------
 2) Explain:
 
-
+The inputs for swap_ints have to be pointers because if we used ints it would just switch the pointer that is assigned to each int object instead of the memory itself. With the pointers we could directly write each value to the correct spot in memory.
 
 -----------------------------------------------------------
 3) Positive/drawback:
 
-
+Not learning the lower level features of coding languages in the intro series was helpful because it didn't bog us down with at the time unnecessary info while we were learning to program, but it was also a drawback because we didn't understand how the code worked under the hood which limited how efficient our code could be.
 
